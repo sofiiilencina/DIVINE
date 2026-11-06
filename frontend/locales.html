@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LOCALES — DIVINE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300,400,500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- PROMO BAR -->
+    <div class="promo-bar">
+      <span><b><a href="#">3 Y 6 CUOTAS SIN INTERÉS</a></b></span>
+      <span><b><a href="#">12 CUOTAS DESDE $350.000</a></b></span>
+      <span><b><a href="#">ENVÍO GRATIS A PARTIR DE $250.000</a></b></span>
+    </div>
+
+  <!-- HEADER -->
+  <header class="main-header" id="navbar">
+  <div class="header-main-head">
+    <div class="header-main-logo-container">
+      <a href="index.html"><span class="logo-text">DIVINE</span></a>
+    </div>
+    <nav class="main-header__nav">
+      <ul class="main-navigation">
+        <li><a href="new-in.html" class="active">NUEVO</a></li>
+        <li class="has-megamenu">
+          <a href="#">COLECCIÓN</a>
+          <div class="megamenu">
+            <div class="megamenu-cols">
+              <div class="megamenu-col">
+                <h5>COLECCIÓN</h5>
+                <ul>
+                  <li><a href="blazers.html">Blazers</a></li>
+                  <li><a href="pantalones.html">Pantalones</a></li>
+                  <li><a href="sets_coordinados.html">Sets Coordinados</a></li>
+                  <li><a href="chaquetas.html">Chaquetas</a></li>
+                  <li><a href="vestidos_monos.html">Vestidos | Monos</a></li>
+                  <li><a href="tejidos.html">Tejidos</a></li>
+                  <li><a href="camisas_blusas.html">Camisas | Blusas</a></li>
+                  <li><a href="remeras_tops.html">Remeras | Tops</a></li>
+                  <li><a href="polleras_shorts.html">Polleras | Shorts</a></li>
+                  <li><a href="jeans.html">Jeans</a></li>
+                  <li><a href="calzado.html">Calzado</a></li>
+                  <li><a href="accesorios.html">Accesorios</a></li>
+                </ul>
+              </div>
+              <div class="megamenu-col">
+                <h5>SHOP BY</h5>
+                <ul>
+                  <li><a href="aprobado_x_Pampita.html">Aprobado x Pampita</a></li>
+                  <li><a href="looks_de_oficina.html">Looks de Oficina</a></li>
+                  <li><a href="by_Camila_Poggi.html">By Camila Poggi</a></li>
+                  <li><a href="fiestas_y_ocasiones.html">Fiestas y Ocasiones</a></li>
+                  <li><a href="shapewear.html">Shapewear</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="megamenu-cards">
+              <div class="megamenu-card"><img src="images/menudesplegable_tops.webp" alt="Tops"><span>Tops</span></div>
+              <div class="megamenu-card"><img src="images/menudesplegable_vestidos.webp" alt="Vestidos"><span>Vestidos</span></div>
+              <div class="megamenu-card"><img src="images/menudesplegable_sastreria.webp" alt="Sastrería"><span>Sastrería</span></div>
+            </div>
+          </div>
+        </li>
+        <li><a href="locales.html">LOCALES</a></li>
+      </ul>
+    </nav>
+
+    <!-- ÍCONOS DEL HEADER (Lupita, Usuario y Carrito con Drawer) -->
+    <div style="display: flex; gap: 20px; align-items: center; position: relative;">
+      
+      <!-- LUPITA DE BÚSQUEDA -->
+      <a href="javascript:void(0)" onclick="abrirSearchDrawer()" style="text-decoration:none; color:#000; display:flex; align-items:center;">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      </a>
+
+      <!-- PERSONITA (LOGIN) -->
+      <a href="javascript:void(0)" onclick="abrirAuthDrawer()" style="text-decoration:none; color:#000; display:flex; align-items:center;">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </a>
+
+      <!-- CARRITO LATERAL (ABRE EL DRAWER DE CARRITO) -->
+      <a href="javascript:void(0)" onclick="abrirCartDrawer()" style="text-decoration:none; color:#000; display:flex; align-items:center; position:relative;">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0"/></svg>
+        <span id="cartCountBadge" style="position: absolute; top: -8px; right: -10px; background: #000; color: #fff; font-size: 10px; padding: 2px 5px; border-radius: 50%; font-weight: 600;">0</span>
+      </a>
+
+    </div>
+  </div>
+</header>
+
+<!-- OVERLAY GLOBAL -->
+<div class="auth-drawer-overlay" id="globalOverlay" onclick="cerrarTodosLosDrawers()"></div>
+
+<!-- DRAWER LATERAL DE BÚSQUEDA -->
+<div class="auth-drawer" id="searchDrawer">
+  <div class="drawer-header">
+    <div class="drawer-title" style="visibility: hidden;">Búsqueda</div>
+    <button class="drawer-close" onclick="cerrarSearchDrawer()">&times;</button>
+  </div>
+  <div class="search-bar-box">
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="margin-right:8px;"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+    <input type="text" id="inputBuscadorGlobal" placeholder="Buscar productos..." oninput="ejecutarBusquedaDinamica(this.value)">
+  </div>
+  <div id="searchResultsCount" class="search-results-count"></div>
+  <div class="search-results-grid" id="searchResultsContainer"></div>
+</div>
+
+<!-- DRAWER LATERAL DE CARRITO -->
+<div class="auth-drawer" id="cartDrawer">
+  <div class="drawer-header">
+    <div class="drawer-title">Carrito</div>
+    <button class="drawer-close" onclick="cerrarCartDrawer()">&times;</button>
+  </div>
+  <div id="cartDrawerItemsContainer" style="flex: 1; overflow-y: auto; display: flex; flex-direction: column;">
+    <!-- Los productos se cargan dinámicamente aquí -->
+  </div>
+  <div style="border-top: 1px solid #eaeaea; padding-top: 20px; margin-top: 20px;">
+    <div style="display: flex; justify-content: space-between; font-size: 14px; font-weight: 600; margin-bottom: 20px;">
+      <span>TOTAL:</span>
+      <span id="cartDrawerTotal">$0</span>
+    </div>
+    <a href="carrito.html" class="btn-cart-drawer">IR AL CARRITO</a>
+  </div>
+</div>
+
+<!-- DRAWER LATERAL DE LOGIN / REGISTRO -->
+<div class="auth-drawer" id="authDrawer">
+  <div class="drawer-header">
+    <div class="drawer-title">Mi Cuenta</div>
+    <button class="drawer-close" onclick="cerrarAuthDrawer()">&times;</button>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 25px; margin-top: 10px;">
+    
+    <!-- SECCIÓN INGRESO -->
+    <div style="background: #fafafa; padding: 20px; border: 1px solid #eee;">
+      <div style="font-size: 12px; font-weight: 600; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 0.5px;">Ya tengo una cuenta</div>
+      <div class="form-group" style="margin-bottom: 12px;">
+        <label style="display:block; font-size:10px; font-weight:600; margin-bottom:4px; text-transform:uppercase;">Email</label>
+        <input type="email" id="drawerLoginEmail" placeholder="Ingresá tu email" style="width:100%; padding:10px; border:1px solid #ddd; font-size:12px; box-sizing:border-box;">
+      </div>
+      <div class="form-group" style="margin-bottom: 15px;">
+        <label style="display:block; font-size:10px; font-weight:600; margin-bottom:4px; text-transform:uppercase;">Contraseña</label>
+        <input type="password" id="drawerLoginPass" placeholder="Ingresá tu contraseña" style="width:100%; padding:10px; border:1px solid #ddd; font-size:12px; box-sizing:border-box;">
+      </div>
+      <button class="btn-auth-action" onclick="realizarLoginDrawer()">Ingresar</button>
+    </div>
+
+    <!-- SECCIÓN REGISTRO -->
+    <div style="background: #fafafa; padding: 20px; border: 1px solid #eee;">
+      <div style="font-size: 12px; font-weight: 600; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 0.5px;">Soy nueva</div>
+      <div class="form-group" style="margin-bottom: 12px;">
+        <label style="display:block; font-size:10px; font-weight:600; margin-bottom:4px; text-transform:uppercase;">Nombre y Apellido</label>
+        <input type="text" id="drawerRegNombre" placeholder="Tu nombre" style="width:100%; padding:10px; border:1px solid #ddd; font-size:12px; box-sizing:border-box;">
+      </div>
+      <div class="form-group" style="margin-bottom: 12px;">
+        <label style="display:block; font-size:10px; font-weight:600; margin-bottom:4px; text-transform:uppercase;">Email (Gmail)</label>
+        <input type="email" id="drawerRegEmail" placeholder="tuusuario@gmail.com" style="width:100%; padding:10px; border:1px solid #ddd; font-size:12px; box-sizing:border-box;">
+      </div>
+      <div class="form-group" style="margin-bottom: 15px;">
+        <label style="display:block; font-size:10px; font-weight:600; margin-bottom:4px; text-transform:uppercase;">Contraseña</label>
+        <input type="password" id="drawerRegPass" placeholder="Creá una contraseña" style="width:100%; padding:10px; border:1px solid #ddd; font-size:12px; box-sizing:border-box;">
+      </div>
+      <button class="btn-auth-action" onclick="realizarRegistroDrawer()">Crear cuenta</button>
+    </div>
+
+    </div>
+    </div>
+  </div>
+
+  <main class="stores-page-container">
+  <h1 class="stores-title">NUESTROS LOCALES</h1>
+
+  <!-- Selector de Provincia -->
+  <div class="province-selector-wrapper">
+    <select id="provinceSelect" class="province-select" onchange="filtrarLocalesPorProvincia(this.value)">
+      <option value="">Todas las provincias</option>
+      <option value="caba">CABA</option>
+      <option value="buenos-aires">Buenos Aires</option>
+      <option value="neuquen">Neuquén</option>
+      <option value="salta">Salta</option>
+    </select>
+  </div>
+
+  <!-- Grilla de Locales -->
+  <div class="stores-grid">
+
+    <!-- ALCORTA SHOPPING -->
+    <div class="store-card" data-province="caba">
+      <h3>ALCORTA SHOPPING</h3>
+      <p><a href="https://www.google.com/maps?q=Jer%C3%B3nimo%20Salguero%203172,%20Palermo,%20CABA" class="store-address" target="_blank" rel="noopener noreferrer">Jerónimo Salguero 3172, Palermo, CABA</a></p>
+      <p class="store-whatsapp">Whatsapp: 1168401771</p>
+      <p class="store-hours">Lunes a Domingo de 10 a 21 hs.</p>
+    </div>
+
+    <!-- ALTO PALERMO SHOPPING -->
+    <div class="store-card" data-province="caba">
+      <h3>ALTO PALERMO SHOPPING</h3>
+      <p><a href="https://www.google.com/maps?q=Av.%20Santa%20Fe%203253,%20Palermo,%20CABA" class="store-address" target="_blank" rel="noopener noreferrer">Av. Santa Fe 3253, Palermo, CABA</a></p>
+      <p class="store-whatsapp">Whatsapp: 1159107218</p>
+      <p class="store-hours">Lunes a Domingo de 10 a 22 hs.</p>
+    </div>
+
+    <!-- GALERÍAS PACÍFICO -->
+    <div class="store-card" data-province="caba">
+      <h3>GALERÍAS PACÍFICO</h3>
+      <p><a href="https://www.google.com/maps?q=Florida%20737,%20CABA" class="store-address" target="_blank" rel="noopener noreferrer">Florida 737, CABA</a></p>
+      <p class="store-whatsapp">Whatsapp: 1159107208</p>
+      <p class="store-hours">Lunes a Domingo de 10 a 21 hs.</p>
+    </div>
+
+    <!-- DOT BAIRES SHOPPING -->
+    <div class="store-card" data-province="caba">
+      <h3>DOT BAIRES SHOPPING</h3>
+      <p><a href="https://www.google.com/maps?q=Vedia%203600,%20Saavedra,%20CABA" class="store-address" target="_blank" rel="noopener noreferrer">Vedia 3600, Saavedra, CABA</a></p>
+      <p class="store-whatsapp">Whatsapp: 1159107207</p>
+      <p class="store-hours">Lunes a Domingo de 10 a 22 hs.</p>
+    </div>
+
+    <!-- EL SOLAR -->
+    <div class="store-card" data-province="caba">
+      <h3>EL SOLAR</h3>
+      <p><a href="https://www.google.com/maps/place/Gorostiaga+1898,+C1426+Cdad.+Aut%C3%B3noma+de+Buenos+Aires/@-34.5674607,-58.4398637,17z/data=!3m1!4b1!4m6!3m5!1s0x95bcb5b92073f793:0x2c58928caccf3958!8m2!3d-34.5674607!4d-58.4372888!16s%2Fg%2F11rgfyyxgm?entry=ttu&g_ep=EgoyMDI2MTEwMy4wIKXMDSoASAFQAw%3D%3D" class="store-address" target="_blank" rel="noopener noreferrer">Gorostiaga 1898, Palermo, CABA</a></p>
+      <p class="store-whatsapp">Whatsapp: 1159107232</p>
+      <p class="store-hours">Lunes a Domingo de 10 a 21 hs.</p>
+    </div>
+
+    <!-- DEVOTO SHOPPING -->
+    <div class="store-card" data-province="caba">
+      <h3>DEVOTO SHOPPING</h3>
+      <p><a href="https://www.google.com/maps/place/Quevedo+3365,+C1417BVC+Cdad.+Aut%C3%B3noma+de+Buenos+Aires/@-34.6115203,-58.5200091,17z/data=!3m1!4b1!4m6!3m5!1s0x95bcb7d7332684cd:0xe740ed3f787b6e28!8m2!3d-34.61163!4d-58.5177701!16s%2Fg%2F11b8v7_xlt?entry=ttu&g_ep=EgoyMDI2MTEwMy4wIKXMDSoASAFQAw%3D%3D" class="store-address" target="_blank" rel="noopener noreferrer">Quevedo 3365, Devoto, CABA</a></p>
+      <p class="store-whatsapp">Whatsapp: 1121692308</p>
+      <p class="store-hours">Domingos a Jueves de 10 a 21 hs. | Viernes y Sábados de 10 a 22 hs.</p>
+    </div>
+
+    <!-- ABASTO SHOPPING -->
+    <div class="store-card" data-province="caba">
+      <h3>ABASTO SHOPPING</h3>
+      <p><a href="https://www.google.com/maps/place/Av.+Corrientes+3247,+C1193+Cdad.+Aut%C3%B3noma+de+Buenos+Aires/@-34.6030689,-58.4133516,17z/data=!3m1!4b1!4m6!3m5!1s0x95bcca8c854bd13f:0x2660b0b79ec093f1!8m2!3d-34.6029955!4d-58.4105591!16s%2Fg%2F11bw3ht8b1?entry=ttu&g_ep=EgoyMDI2MTEwMy4wIKXMDSoASAFQAw%3D%3D" class="store-address" target="_blank" rel="noopener noreferrer">Av. Corrientes 3247, Balvanera, CABA</a></p>
+      <p class="store-whatsapp">Whatsapp: 1159107219</p>
+      <p class="store-hours">Lunes a Domingo de 10 a 22 hs.</p>
+    </div>
+
+    <!-- CABALLITO -->
+    <div class="store-card" data-province="caba">
+      <h3>CABALLITO</h3>
+      <p><a href="https://www.google.com/maps/place/Av.+Rivadavia+5040,+C1406+Cdad.+Aut%C3%B3noma+de+Buenos+Aires/@-34.6188077,-58.4395742,17z/data=!3m1!4b1!4m6!3m5!1s0x95bcca46d0db2b05:0x90c862278493f6eb!8m2!3d-34.6188077!4d-58.4369993!16s%2Fg%2F11bw442f9g?entry=ttu&g_ep=EgoyMDI2MTEwMy4wIKXMDSoASAFQAw%3D%3D" class="store-address" target="_blank" rel="noopener noreferrer">Av. Rivadavia 5040, Caballito, CABA</a></p>
+      <p class="store-whatsapp">Whatsapp: 1159107212</p>
+      <p class="store-hours">Lunes a Viernes de 9 a 20 hs. | Sábado de 10 a 20 hs. | Domingos de 10 a 19 hs.</p>
+    </div>
+
+    <!-- DISTRITO ARCOS OUTLET -->
+    <div class="store-card" data-province="caba">
+      <h3>DISTRITO ARCOS OUTLET</h3>
+      <p><a href="https://www.google.com/maps/place/Godoy+Cruz+2470,+C1425+Cdad.+Aut%C3%B3noma+de+Buenos+Aires/@-34.5809588,-58.4300031,17z/data=!3m1!4b1!4m6!3m5!1s0x95bcb5854a4114f7:0xac6f85b52cf47ec3!8m2!3d-34.5809588!4d-58.4274282!16s%2Fg%2F11pyjdbgwq?entry=ttu&g_ep=EgoyMDI2MTEwMy4wIKXMDSoASAFQAw%3D%3D" class="store-address" target="_blank" rel="noopener noreferrer">Godoy Cruz 2470, Palermo, CABA</a></p>
+      <p class="store-whatsapp">Whatsapp: 1159107249</p>
+      <p class="store-hours">Lunes a Domingo de 10 a 21 hs.</p>
+    </div>
+
+    <!-- RECOLETA MALL -->
+    <div class="store-card" data-province="caba">
+      <h3>RECOLETA MALL</h3>
+      <p><a href="https://www.google.com/maps/place/Vicente+L%C3%B3pez+2050,+C1128+Cdad.+Aut%C3%B3noma+de+Buenos+Aires/@-34.5892469,-58.3964615,17z/data=!3m1!4b1!4m6!3m5!1s0x95bccaa28551b5c1:0x24846a299ac3fc37!8m2!3d-34.5892469!4d-58.3938866!16s%2Fg%2F11bw444l5r?entry=ttu&g_ep=EgoyMDI2MTEwMy4wIKXMDSoASAFQAw%3D%3D" class="store-address" target="_blank" rel="noopener noreferrer">Vicente López 2050, Recoleta, CABA</a></p>
+      <p class="store-whatsapp">Whatsapp: 1159107230</p>
+      <p class="store-hours">Lunes a Domingo de 10 a 21 hs.</p>
+    </div>
+
+    <!-- UNICENTER SHOPPING -->
+    <div class="store-card" data-province="buenos-aires">
+      <h3>UNICENTER SHOPPING</h3>
+      <p><a href="https://www.google.com/maps/place/Unicenter+Shopping,+Paran%C3%A1+3745,+B1640FRC+Mart%C3%ADnez,+Provincia+de+Buenos+Aires/@-34.5082276,-58.5263878,17z/data=!3m1!4b1!4m6!3m5!1s0x95bcb0f1ed7aaf39:0xbdd8cae7726d0301!8m2!3d-34.5082276!4d-58.5238129!16s%2Fg%2F11rgfz98p3?entry=ttu&g_ep=EgoyMDI2MTEwMy4wIKXMDSoASAFQAw%3D%3D" class="store-address" target="_blank" rel="noopener noreferrer">Paraná 3745, Martínez, Buenos Aires</a></p>
+      <p class="store-whatsapp">Whatsapp: 1159107231</p>
+      <p class="store-hours">Lunes a Domingo de 10 a 22 hs.</p>
+    </div>
+
+    <!-- PALMAS DEL PILAR SHOPPING -->
+    <div class="store-card" data-province="buenos-aires">
+      <h3>PALMAS DEL PILAR SHOPPING</h3>
+      <p><a href="https://www.google.com/maps/place/Las+Magnolias+754,+B1629+Pilar,+Provincia+de+Buenos+Aires/@-34.4470142,-58.8733453,16z/data=!3m1!4b1!4m6!3m5!1s0x95bc9c5a04e8dffb:0xc0d90f0467fbabdf!8m2!3d-34.4465667!4d-58.8699167!16s%2Fg%2F11ckqmny2r?entry=ttu&g_ep=EgoyMDI2MTEwMy4wIKXMDSoASAFQAw%3D%3D" class="store-address" target="_blank" rel="noopener noreferrer">Las Magnolias 754, La Lonja, Buenos Aires</a></p>
+      <p class="store-whatsapp">Whatsapp: 1159107237</p>
+      <p class="store-hours">Lunes a Domingo de 10 a 22 hs.</p>
+    </div>
+
+    <!-- MARTINEZ -->
+    <div class="store-card" data-province="buenos-aires">
+      <h3>MARTINEZ</h3>
+      <p><a href="https://www.google.com/maps?q=General%20Alvear%20250,%20Mart%C3%ADnez,%20Buenos%20Aires" class="store-address" target="_blank" rel="noopener noreferrer">General Alvear 250, Martínez, Buenos Aires</a></p>
+      <p class="store-whatsapp">Whatsapp: 1123087520</p>
+      <p class="store-hours">Lunes a Sábado de 10 a 19.30 hs.</p>
+    </div>
+
+    <!-- TORTUGAS OPEN MALL -->
+    <div class="store-card" data-province="buenos-aires">
+      <h3>TORTUGAS OPEN MALL</h3>
+      <p><a href="https://www.google.com/maps/place/Acceso+Norte+Ramal+Pilar+1667,+B7500XAC+Tortuguitas,+Provincia+de+Buenos+Aires/@-34.4519752,-58.7287771,17z/data=!3m1!4b1!4m6!3m5!1s0x95bca20df7230959:0x6e3719488fda1c19!8m2!3d-34.4519752!4d-58.7262022!16s%2Fg%2F11nnkvd01r?entry=ttu&g_ep=EgoyMDI2MTEwMy4wIKXMDSoASAFQAw%3D%3D" class="store-address" target="_blank" rel="noopener noreferrer">Ramal Pilar 1667, Tortuguitas, Buenos Aires</a></p>
+      <p class="store-whatsapp">Whatsapp: 1159107201</p>
+      <p class="store-hours">Lunes a Domingo de 10 a 22 hs.</p>
+    </div>
+
+    <!-- ALTO AVELLANEDA -->
+    <div class="store-card" data-province="buenos-aires">
+      <h3>ALTO AVELLANEDA</h3>
+      <p><a href="https://www.google.com/maps/place/Gral.+G%C3%BCemes+897,+B1873BOC+Avellaneda,+Provincia+de+Buenos+Aires/@-34.6744371,-58.3686357,17z/data=!3m1!4b1!4m6!3m5!1s0x95a33335d86891d3:0x2a99fb05009508f5!8m2!3d-34.6744371!4d-58.3660608!16s%2Fg%2F11g6xkndvl?entry=ttu&g_ep=EgoyMDI2MTEwMy4wIKXMDSoASAFQAw%3D%3D" class="store-address" target="_blank" rel="noopener noreferrer">Av. General Güemes 897, Avellaneda, Buenos Aires</a></p>
+      <p class="store-whatsapp">Whatsapp: 1159107220</p>
+      <p class="store-hours">Lunes a Domingo de 10 a 22 hs.</p>
+    </div>
+
+    <!-- LA PLATA -->
+    <div class="store-card" data-province="buenos-aires">
+      <h3>LA PLATA</h3>
+      <p><a href="https://www.google.com/maps/place/C.+5+914,+B1900+La+Plata,+Provincia+de+Buenos+Aires/@-34.9131035,-57.9498376,17z/data=!3m1!4b1!4m6!3m5!1s0x95a2e6397e408bb5:0x90ac79341bba8c25!8m2!3d-34.9131035!4d-57.9472627!16s%2Fg%2F11s19qzgcl?entry=ttu&g_ep=EgoyMDI2MTEwMy4wIKXMDSoASAFQAw%3D%3D" class="store-address" target="_blank" rel="noopener noreferrer">C. 5 914, La Plata</a></p>
+      <p class="store-whatsapp">Whatsapp: 1168401770</p>
+      <p class="store-hours">Lunes a Sábado de 9 a 20 hs. | Domingos de 11 a 19 hs.</p>
+    </div>
+
+    <!-- LOMITAS -->
+    <div class="store-card" data-province="buenos-aires">
+      <h3>LOMITAS</h3>
+      <p><a href="https://www.google.com/maps/place/Espa%C3%B1a+274,+B1832+DFI,+Provincia+de+Buenos+Aires/@-34.7641072,-58.4025643,17z/data=!3m1!4b1!4m6!3m5!1s0x95bcd2eb7c5bbdf7:0x2ab0456ce730db7f!8m2!3d-34.7641072!4d-58.3999894!16s%2Fg%2F11sbrhzxwc?entry=ttu&g_ep=EgoyMDI2MTEwMy4wIKXMDSoASAFQAw%3D%3D" class="store-address" target="_blank" rel="noopener noreferrer">España 274, Lomas de Zamora, Buenos Aires</a></p>
+      <p class="store-whatsapp">Whatsapp: 1166720200</p>
+      <p class="store-hours">Lunes a Sábado de 10 a 20 hs.</p>
+    </div>
+
+    <!-- PLAZA OESTE SHOPPING -->
+    <div class="store-card" data-province="buenos-aires">
+      <h3>PLAZA OESTE SHOPPING</h3>
+      <p><a href="https://www.google.com/maps/place/Av.+Gdor.+Vergara+658,+B1688+Mor%C3%B3n,+Provincia+de+Buenos+Aires/@-34.6347242,-58.6320513,17z/data=!3m1!4b1!4m6!3m5!1s0x95bcb8bbed6baa01:0xaee9a063107cc096!8m2!3d-34.6347242!4d-58.6294764!16s%2Fg%2F11q2nd8hl5?entry=ttu&g_ep=EgoyMDI2MTEwMy4wIKXMDSoASAFQAw%3D%3D" class="store-address" target="_blank" rel="noopener noreferrer">Av. Gdor. Vergara 658, Morón, Buenos Aires</a></p>
+      <p class="store-whatsapp">Whatsapp: 1159107229</p>
+      <p class="store-hours">Domingo a Jueves de 10 a 21 hs. | Viernes, Sábados y vísperas de feriado de 10 a 22 hs.</p>
+    </div>
+
+    <!-- QUILMES -->
+    <div class="store-card" data-province="buenos-aires">
+      <h3>QUILMES</h3>
+      <p><a href="https://www.google.com/maps/place/Alsina+165,+C1878+Quilmes,+Provincia+de+Buenos+Aires/@-34.7217308,-58.2610784,17z/data=!3m1!4b1!4m6!3m5!1s0x95a32e6ab05b4bbd:0x2a45941dff48fed3!8m2!3d-34.7217308!4d-58.2585035!16s%2Fg%2F11sk2tq11x?entry=ttu&g_ep=EgoyMDI2MTEwMy4wIKXMDSoASAFQAw%3D%3D" class="store-address" target="_blank" rel="noopener noreferrer">Alsina 165, Quilmes, Buenos Aires</a></p>
+      <p class="store-whatsapp">Whatsapp: 1130641978</p>
+      <p class="store-hours">Lunes a Sábado de 10 a 19.30 hs.</p>
+    </div>
+
+    <!-- SOLEIL PREMIUM OUTLET -->
+    <div class="store-card" data-province="buenos-aires">
+      <h3>SOLEIL PREMIUM OUTLET</h3>
+      <p><a href="https://www.google.com/maps/place/Bernardo+de+Irigoyen+2647,+B1609BGW+Boulogne,+Provincia+de+Buenos+Aires/@-34.4914374,-58.5945262,17z/data=!3m1!4b1!4m6!3m5!1s0x95bcbadba4141fd1:0x83961b10fc826577!8m2!3d-34.4914374!4d-58.5919513!16s%2Fg%2F11jrl_l0cz?entry=ttu&g_ep=EgoyMDI2MTEwMy4wIKXMDSoASAFQAw%3D%3D" class="store-address" target="_blank" rel="noopener noreferrer">Bernardo de Irigoyen 2647, Boulogne, Buenos Aires</a></p>
+      <p class="store-whatsapp">Whatsapp: 1159107203</p>
+      <p class="store-hours">Lunes a Domingo de 10 a 22 hs.</p>
+    </div>
+
+    <!-- BAHÍA BLANCA PLAZA SHOPPING -->
+    <div class="store-card" data-province="buenos-aires">
+      <h3>BAHÍA BLANCA PLAZA SHOPPING</h3>
+      <p><a href="https://www.google.com/maps/place/Sarmiento+2153,+B8000+Bah%C3%ADa+Blanca,+Provincia+de+Buenos+Aires/@-38.6999256,-62.2473053,16z/data=!3m1!4b1!4m6!3m5!1s0x95eda4a0f7eb4eb5:0x14dbfbd7dffa987c!8m2!3d-38.7007189!4d-62.2415856!16s%2Fg%2F11b8v807l7?entry=ttu&g_ep=EgoyMDI2MTEwMy4wIKXMDSoASAFQAw%3D%3D" class="store-address" target="_blank" rel="noopener noreferrer">Sarmiento 2153, Bahía Blanca, Buenos Aires</a></p>
+      <p class="store-whatsapp">Whatsapp: 2914397301</p>
+      <p class="store-hours">Lunes a Domingo de 10 a 21 hs.</p>
+    </div>
+
+    <!-- ALTO COMAHUE -->
+    <div class="store-card" data-province="neuquen">
+      <h3>ALTO COMAHUE</h3>
+      <p><a href="https://www.google.com/maps/place/Av.+Dr.+Ram%C3%B3n+355,+Q8302+Neuqu%C3%A9n/@-38.9420114,-68.0673519,17z/data=!3m1!4b1!4m6!3m5!1s0x960a33c231ea1c7b:0xf16d636f84dadd62!8m2!3d-38.9420114!4d-68.064777!16s%2Fg%2F11h5qtrs7c?entry=ttu&g_ep=EgoyMDI2MTEwMy4wIKXMDSoASAFQAw%3D%3D" class="store-address" target="_blank" rel="noopener noreferrer">Av. Dr. Ramón 355, Neuquén</a></p>
+      <p class="store-whatsapp">Whatsapp: 3517367547</p>
+      <p class="store-hours">Lunes a Domingo de 10 a 22 hs.</p>
+    </div>
+
+    <!-- PORTAL PATAGONIA -->
+    <div class="store-card" data-province="neuquen">
+      <h3>PORTAL PATAGONIA</h3>
+      <p><a href="https://www.google.com/maps?q=Juan%20Juli%C3%A1n%20Lastra%202400,%20Neuqu%C3%A9n" class="store-address" target="_blank" rel="noopener noreferrer">Juan Julián Lastra 2400, Neuquén</a></p>
+      <p class="store-whatsapp">Whatsapp: 3513770060</p>
+      <p class="store-hours">Lunes a Domingo de 10 a 22 hs.</p>
+    </div>
+
+    <!-- ALTO NOA -->
+    <div class="store-card" data-province="salta">
+      <h3>ALTO NOA</h3>
+      <p><a href="https://www.google.com/maps?q=Av.%20del%20Bicentenario%20de%20la%20Batalla%20de%20Salta%20702,%20Salta" class="store-address" target="_blank" rel="noopener noreferrer">Av. del Bicentenario de la Batalla de Salta 702, Salta</a></p>
+      <p class="store-whatsapp">Whatsapp: 3872283332</p>
+      <p class="store-hours">Lunes a Domingo de 10 a 22 hs.</p>
+    </div>
+
+    
+  </div>
+
+  <!-- BANNER IMAGEN INFERIOR DE LOCAL -->
+  <section class="store-bottom-banner">
+    <img src="images/local_interior_banner.png" alt="DIVINE Local Interior">
+  </section>
+</main>
+
+  <!-- BENEFICIOS / POLÍTICAS -->
+  <section class="benefits-section">
+    <div class="benefit-col">
+      <h4>ENVÍOS A TODO EL PAÍS</h4>
+      <p>Recibí tu pedido de<br>3 a 5 días hábiles.</p>
+      <a href="metodos_envio.html">Conocé más acá</a>
+    </div>
+    <div class="benefit-col">
+      <h4>CAMBIOS Y DEVOLUCIONES</h4>
+      <p>Hasta 30 días después de haber<br>realizado la compra.</p>
+      <a href="cambios_devoluciones.html">Conocé más acá</a>
+    </div>
+    <div class="benefit-col">
+      <h4>MÉTODOS DE PAGO</h4>
+      <p>Hasta 12 cuotas sin interés<br>en compras superiores a $350.000.</p>
+      <a href="metodos_pago.html">Conocé más acá</a>
+    </div>
+  </section>
+
+  <!-- FOOTER ESTILO MARKOVA -->
+  <footer class="footer-markova">
+    <div class="footer-grid">
+      <div class="footer-col newsletter-col">
+        <h4>Newsletter</h4>
+        <p>Sé la primera en enterarte de las últimas novedades.</p>
+        <form id="newsletterForm" class="footer-form" novalidate>
+          <input type="email" id="email" placeholder="Ingresá tu email" required>
+          <button type="submit" class="btn-text-submit">Confirmar</button>
+        </form>
+        <p class="newsletter-error" id="newsletterError"></p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Sobre Divine</h4>
+        <p><a href="historia_DIVINE.HTML" class="underline">Conocé la historia de marca acá</a></p>
+        <h4 class="mt-20">Seguinos en nuestras redes</h4>
+        <div class="social-links">
+          <a href="#">Facebook</a>
+          <a href="#">Instagram</a>
+          <a href="#">Tiktok</a>
+        </div>
+      </div>
+
+      <div class="footer-col contact-col">
+        <h4>Contacto</h4>
+        <p>✉ Escribinos</p>
+        <p>📞 1168401764</p>
+        <p>📍 Locales</p>
+        <p>❓ Preguntas frecuentes</p>
+        <p>🛍 Arrepentimiento de compra</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-legal">
+        <span>DIVINE ©2026. Todos los derechos reservados.</span>
+      </div>
+      <div class="footer-terms">
+        <a href="terminos_&_condiciones.html">Términos & Condiciones</a> | <a href="politica_privacidad.html">Política de privacidad</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ESTRUCTURA AGREGADA DEL SIDEBAR Y OVERLAY DEL CARRITO -->
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h2>CARRITO</h2>
+      <button class="cart-close" id="closeCart">&times;</button>
+    </div>
+    <div class="cart-items-container">
+      <!-- Los productos del carrito se cargan aquí -->
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>TOTAL:</span>
+        <span class="cart-total-price">$0</span>
+      </div>
+      <button class="btn-checkout">IR AL CARRITO</button>
+    </div>
+  </div>
+  <div class="cart-overlay" id="cartOverlay"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

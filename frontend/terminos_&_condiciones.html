@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TÉRMINOS Y CONDICIONES — DIVINE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300,400,500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- PROMO BAR -->
+    <div class="promo-bar">
+      <span><b><a href="#">3 Y 6 CUOTAS SIN INTERÉS</a></b></span>
+      <span><b><a href="#">12 CUOTAS DESDE $350.000</a></b></span>
+      <span><b><a href="#">ENVÍO GRATIS A PARTIR DE $250.000</a></b></span>
+    </div>
+
+  <!-- HEADER -->
+  <header class="main-header" id="navbar">
+  <div class="header-main-head">
+    <div class="header-main-logo-container">
+      <a href="index.html"><span class="logo-text">DIVINE</span></a>
+    </div>
+    <nav class="main-header__nav">
+      <ul class="main-navigation">
+        <li><a href="new-in.html" class="active">NUEVO</a></li>
+        <li class="has-megamenu">
+          <a href="#">COLECCIÓN</a>
+          <div class="megamenu">
+            <div class="megamenu-cols">
+              <div class="megamenu-col">
+                <h5>COLECCIÓN</h5>
+                <ul>
+                  <li><a href="blazers.html">Blazers</a></li>
+                  <li><a href="pantalones.html">Pantalones</a></li>
+                  <li><a href="sets_coordinados.html">Sets Coordinados</a></li>
+                  <li><a href="chaquetas.html">Chaquetas</a></li>
+                  <li><a href="vestidos_monos.html">Vestidos | Monos</a></li>
+                  <li><a href="tejidos.html">Tejidos</a></li>
+                  <li><a href="camisas_blusas.html">Camisas | Blusas</a></li>
+                  <li><a href="remeras_tops.html">Remeras | Tops</a></li>
+                  <li><a href="polleras_shorts.html">Polleras | Shorts</a></li>
+                  <li><a href="jeans.html">Jeans</a></li>
+                  <li><a href="calzado.html">Calzado</a></li>
+                  <li><a href="accesorios.html">Accesorios</a></li>
+                </ul>
+              </div>
+              <div class="megamenu-col">
+                <h5>SHOP BY</h5>
+                <ul>
+                  <li><a href="aprobado_x_Pampita.html">Aprobado x Pampita</a></li>
+                  <li><a href="looks_de_oficina.html">Looks de Oficina</a></li>
+                  <li><a href="by_Camila_Poggi.html">By Camila Poggi</a></li>
+                  <li><a href="fiestas_y_ocasiones.html">Fiestas y Ocasiones</a></li>
+                  <li><a href="shapewear.html">Shapewear</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="megamenu-cards">
+              <div class="megamenu-card"><img src="images/menudesplegable_tops.webp" alt="Tops"><span>Tops</span></div>
+              <div class="megamenu-card"><img src="images/menudesplegable_vestidos.webp" alt="Vestidos"><span>Vestidos</span></div>
+              <div class="megamenu-card"><img src="images/menudesplegable_sastreria.webp" alt="Sastrería"><span>Sastrería</span></div>
+            </div>
+          </div>
+        </li>
+        <li><a href="locales.html">LOCALES</a></li>
+      </ul>
+    </nav>
+
+    <!-- ÍCONOS DEL HEADER (Lupita, Usuario y Carrito con Drawer) -->
+    <div style="display: flex; gap: 20px; align-items: center; position: relative;">
+      
+      <!-- LUPITA DE BÚSQUEDA -->
+      <a href="javascript:void(0)" onclick="abrirSearchDrawer()" style="text-decoration:none; color:#000; display:flex; align-items:center;">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      </a>
+
+      <!-- PERSONITA (LOGIN) -->
+      <a href="javascript:void(0)" onclick="abrirAuthDrawer()" style="text-decoration:none; color:#000; display:flex; align-items:center;">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </a>
+
+      <!-- CARRITO LATERAL (ABRE EL DRAWER DE CARRITO) -->
+      <a href="javascript:void(0)" onclick="abrirCartDrawer()" style="text-decoration:none; color:#000; display:flex; align-items:center; position:relative;">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0"/></svg>
+        <span id="cartCountBadge" style="position: absolute; top: -8px; right: -10px; background: #000; color: #fff; font-size: 10px; padding: 2px 5px; border-radius: 50%; font-weight: 600;">0</span>
+      </a>
+
+    </div>
+  </div>
+</header>
+
+<!-- OVERLAY GLOBAL -->
+<div class="auth-drawer-overlay" id="globalOverlay" onclick="cerrarTodosLosDrawers()"></div>
+
+<!-- DRAWER LATERAL DE BÚSQUEDA -->
+<div class="auth-drawer" id="searchDrawer">
+  <div class="drawer-header">
+    <div class="drawer-title" style="visibility: hidden;">Búsqueda</div>
+    <button class="drawer-close" onclick="cerrarSearchDrawer()">&times;</button>
+  </div>
+  <div class="search-bar-box">
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="margin-right:8px;"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+    <input type="text" id="inputBuscadorGlobal" placeholder="Buscar productos..." oninput="ejecutarBusquedaDinamica(this.value)">
+  </div>
+  <div id="searchResultsCount" class="search-results-count"></div>
+  <div class="search-results-grid" id="searchResultsContainer"></div>
+</div>
+
+<!-- DRAWER LATERAL DE CARRITO -->
+<div class="auth-drawer" id="cartDrawer">
+  <div class="drawer-header">
+    <div class="drawer-title">Carrito</div>
+    <button class="drawer-close" onclick="cerrarCartDrawer()">&times;</button>
+  </div>
+  <div id="cartDrawerItemsContainer" style="flex: 1; overflow-y: auto; display: flex; flex-direction: column;">
+    <!-- Los productos se cargan dinámicamente aquí -->
+  </div>
+  <div style="border-top: 1px solid #eaeaea; padding-top: 20px; margin-top: 20px;">
+    <div style="display: flex; justify-content: space-between; font-size: 14px; font-weight: 600; margin-bottom: 20px;">
+      <span>TOTAL:</span>
+      <span id="cartDrawerTotal">$0</span>
+    </div>
+    <a href="carrito.html" class="btn-cart-drawer">IR AL CARRITO</a>
+  </div>
+</div>
+
+<!-- DRAWER LATERAL DE LOGIN / REGISTRO -->
+<div class="auth-drawer" id="authDrawer">
+  <div class="drawer-header">
+    <div class="drawer-title">Mi Cuenta</div>
+    <button class="drawer-close" onclick="cerrarAuthDrawer()">&times;</button>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 25px; margin-top: 10px;">
+    
+    <!-- SECCIÓN INGRESO -->
+    <div style="background: #fafafa; padding: 20px; border: 1px solid #eee;">
+      <div style="font-size: 12px; font-weight: 600; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 0.5px;">Ya tengo una cuenta</div>
+      <div class="form-group" style="margin-bottom: 12px;">
+        <label style="display:block; font-size:10px; font-weight:600; margin-bottom:4px; text-transform:uppercase;">Email</label>
+        <input type="email" id="drawerLoginEmail" placeholder="Ingresá tu email" style="width:100%; padding:10px; border:1px solid #ddd; font-size:12px; box-sizing:border-box;">
+      </div>
+      <div class="form-group" style="margin-bottom: 15px;">
+        <label style="display:block; font-size:10px; font-weight:600; margin-bottom:4px; text-transform:uppercase;">Contraseña</label>
+        <input type="password" id="drawerLoginPass" placeholder="Ingresá tu contraseña" style="width:100%; padding:10px; border:1px solid #ddd; font-size:12px; box-sizing:border-box;">
+      </div>
+      <button class="btn-auth-action" onclick="realizarLoginDrawer()">Ingresar</button>
+    </div>
+
+    <!-- SECCIÓN REGISTRO -->
+    <div style="background: #fafafa; padding: 20px; border: 1px solid #eee;">
+      <div style="font-size: 12px; font-weight: 600; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 0.5px;">Soy nueva</div>
+      <div class="form-group" style="margin-bottom: 12px;">
+        <label style="display:block; font-size:10px; font-weight:600; margin-bottom:4px; text-transform:uppercase;">Nombre y Apellido</label>
+        <input type="text" id="drawerRegNombre" placeholder="Tu nombre" style="width:100%; padding:10px; border:1px solid #ddd; font-size:12px; box-sizing:border-box;">
+      </div>
+      <div class="form-group" style="margin-bottom: 12px;">
+        <label style="display:block; font-size:10px; font-weight:600; margin-bottom:4px; text-transform:uppercase;">Email (Gmail)</label>
+        <input type="email" id="drawerRegEmail" placeholder="tuusuario@gmail.com" style="width:100%; padding:10px; border:1px solid #ddd; font-size:12px; box-sizing:border-box;">
+      </div>
+      <div class="form-group" style="margin-bottom: 15px;">
+        <label style="display:block; font-size:10px; font-weight:600; margin-bottom:4px; text-transform:uppercase;">Contraseña</label>
+        <input type="password" id="drawerRegPass" placeholder="Creá una contraseña" style="width:100%; padding:10px; border:1px solid #ddd; font-size:12px; box-sizing:border-box;">
+      </div>
+      <button class="btn-auth-action" onclick="realizarRegistroDrawer()">Crear cuenta</button>
+    </div>
+
+    </div>
+    </div>
+  </div>
+
+  <main class="shipping-page-container">
+  <h1 class="shipping-main-title">TÉRMINOS & CONDICIONES</h1>
+
+  <section class="shipping-section">
+    <h3>NOTIFICACIÓN EN POLÍTICA DE ENVÍOS</h3>
+    <p>De acuerdo con lo establecido por las autoridades nacionales y en línea con las recomendaciones para resguardar la salud pública y de nuestro equipo, informamos las condiciones operativas de nuestros canales:</p>
+    
+    <p><strong>Tienda Online:</strong></p>
+    <p>La tienda online seguirá operativa y las compras realizadas se despacharán según la disponibilidad de los servicios de correo y logística privada.</p>
+
+    <p><strong>Pedidos en Tránsito:</strong></p>
+    <p>Los clientes que tuvieran pedidos en tránsito o en sucursal/local podrán optar por una de las siguientes opciones:</p>
+    <ul class="shipping-list">
+      <li>Extender el tiempo de retención en sucursal/local hasta poder retirarlo.</li>
+      <li>Solicitar la modificación del tipo de envío para que el mismo sea enviado a domicilio.</li>
+    </ul>
+
+    <p><strong>Plazos:</strong></p>
+    <p>Los presentes Términos y Condiciones generales (en adelante, "Términos y Condiciones") se aplicarán para la navegación del sitio de internet divine.com (en adelante, el "Website") y los servicios ofrecidos en él.</p>
+    <p>Resultarán aplicables los Términos y Condiciones conforme a la legislación vigente de la República Argentina para todos los efectos jurídicos que se produzcan.</p>
+    <p>Cualquier persona física o jurídica que desee contratar los servicios de DIVINE S.A. (en adelante, "DIVINE") debe registrarse en el Sitio y se la denominará de aquí en adelante "USUARIO".</p>
+    <p>El USUARIO debe leer, entender y aceptar todas las condiciones establecidas en los Términos y Condiciones de la EMPRESA, previo a su registro como miembro de DIVINE. Quien haga uso del sitio acepta las condiciones del servicio quedando sujeta a ellas.</p>
+    <p><strong>CUALQUIER PERSONA QUE NO ACCEPTE ESTOS TÉRMINOS Y CONDICIONES GENERALES, LOS CUALES TIENEN UN CARÁCTER OBLIGATORIO Y VINCULANTE, DEBERÁ ABSTENERSE DE UTILIZAR EL SITIO Y/O LOS SERVICIOS.</strong></p>
+  </section>
+
+  <section class="shipping-section">
+    <h3>01. Modificación de los Términos y Condiciones</h3>
+    <p>Los Términos y Condiciones podrán ser sustituidos o sufrir modificaciones en cualquier momento y a exclusivo criterio de DIVINE, sin requerir el consentimiento de los Usuarios. Para las transacciones en curso que hayan comenzado con anterioridad a dichas modificaciones, subsistirán las condiciones vigentes al momento de su concertación, a menos que las nuevas modificaciones introducidas fueran más convenientes para el Usuario.</p>
+    <p>DIVINE pondrá un aviso en el Website alertando a los Usuarios sobre estos cambios durante un tiempo razonable. Sin perjuicio de lo anterior, los Usuarios son responsables de leer estos Términos y Condiciones cada vez que ingresen al Website para ver si han sufrido modificaciones.</p>
+  </section>
+
+  <section class="shipping-section">
+    <h3>02. Interrupción del Servicio - Exclusión de responsabilidad</h3>
+    <p>DIVINE se reserva el derecho de interrumpir, suspender o modificar en cualquier momento los servicios ofrecidos en el presente Website, ya sea en forma permanente o transitoria. No se requerirá la conformidad de los Usuarios, ni será necesario aviso previo alguno.</p>
+    <p>Asimismo, DIVINE no garantiza el acceso o uso permanente del Website, ya que éste podría interrumpirse por cuestiones técnicas ajenas a la empresa.</p>
+    <p>No obstante lo mencionado anteriormente, si la suspensión o interrupción mencionada no obedeciere a razones de fuerza mayor o caso fortuito, DIVINE se compromete a cumplir las prestaciones que estuvieran pendientes al momento de la suspensión o interrupción.</p>
+    <p>DIVINE no garantiza que el Website se encuentre libre de virus, gusanos o cualquier otro elemento que pueda llegar a dañar o alterar el normal funcionamiento de un ordenador. Es responsabilidad y obligación exclusiva del Usuario contar con las herramientas adecuadas para detectar, desinfectar y/o prevenir cualquier tipo de elementos y/o posibles daños de esta naturaleza.</p>
+    <p>DIVINE no se responsabiliza por cualquier daño que pueda producirse en los equipos informáticos de los Usuarios o de terceros como consecuencia de la navegación del presente Website.</p>
+  </section>
+
+  <section class="shipping-section">
+    <h3>03. Registración</h3>
+    <p>La registración de los Usuarios se realiza ingresando al Website y no tiene costo alguno.</p>
+    <p>Es obligatorio completar el formulario en todos los campos con datos válidos y verdaderos, de manera exacta y precisa. Para un correcto funcionamiento del sistema, es necesario que los Usuarios mantengan sus datos actualizados. DIVINE podrá proceder a verificar la identidad del Usuario y/o de los datos consignados por éste.</p>
+    <p>DIVINE no se responsabiliza por la veracidad o certeza de los datos provistos por los Usuarios. Asimismo, DIVINE se reserva el derecho de suspender temporal o definitivamente a los Usuarios en caso de incumplimiento de los Términos y Condiciones, como así también de rechazar solicitudes.</p>
+    <p>Los USUARIOS accederán a su Cuenta Personal (la "Cuenta") mediante un nombre de Usuario y una clave personal que deberán escoger. En caso de que estos datos sean olvidados por el Usuario, DIVINE cuenta con un servicio de ayuda para recuperarlos. Para esto se deberá hacer clic en la opción correspondiente e ingresar el e-mail que se proporcionó al momento de la registración.</p>
+    <p>Así como DIVINE se compromete a mantener la confidencialidad de los datos aportados por los Usuarios para su registro, los Usuarios se comprometen a mantener la confidencialidad de su nombre y clave de acceso. El Usuario se compromete a notificar inmediatamente y de manera fehaciente a DIVINE cualquier uso no autorizado de su Cuenta de Usuario.</p>
+  </section>
+
+  <section class="shipping-section">
+    <h3>04. Capacidad</h3>
+    <p>Para utilizar los servicios del Website se requiere tener capacidad legal para contratar. No podrán acceder a los servicios quienes carezcan de ella, los que hayan sido suspendidos o inhabilitados, ni los menores de edad. Los padres, tutores o responsables de los menores de edad o incapaces que utilicen el Website serán responsables por dicho uso.</p>
+  </section>
+
+  <section class="shipping-section">
+    <h3>05. Veracidad de la información suministrada</h3>
+    <p>En caso de que la información o los datos suministrados por el Usuario no sea verdadera, éste será responsable por los daños que este hecho pudiera ocasionar.</p>
+  </section>
+
+  <section class="shipping-section">
+    <h3>06. Sugerencias y comentarios</h3>
+    <p>Todas las sugerencias y comentarios que realice el Usuario podrán ser tenidos en cuenta, implementados o adaptados por DIVINE sin que ello genere derecho alguno a favor de tal Usuario.</p>
+  </section>
+
+  <section class="shipping-section">
+    <h3>07. Cookies</h3>
+    <p>El Website puede utilizar un sistema de seguimiento mediante "cookies", para que el acceso a la información se realice con mayor rapidez. También ayuda en algunos casos a identificar a los Usuarios sin necesidad de solicitarles la clave de acceso una y otra vez.</p>
+    <p>Estas cookies son pequeños archivos que envía la página visitada y se alojan en el equipo informático, ocupando poco espacio.</p>
+    <p>Se hace saber a los Usuarios que utilizando las opciones de su navegador podrán limitar o restringir según su voluntad el alojamiento de estas "cookies", aunque es desaconsejable restringirlas totalmente.</p>
+  </section>
+
+  <section class="shipping-section">
+    <h3>08. Disponibilidad y precio de los productos ofrecidos</h3>
+    <p>Antes de comprar, el Usuario deberá tener en cuenta que los productos seleccionados pueden no encontrarse en stock. Toda compra se encuentra sujeta a disponibilidad.</p>
+    <p>Del mismo modo, el precio de los productos que ofrecemos en el Website puede no coincidir con el de los distintos locales o distribuidores oficiales.</p>
+  </section>
+
+  <section class="shipping-section">
+    <h3>09. Opciones del Usuario ante productos agotados o demorados</h3>
+    <p>En concordancia con el punto anterior, en caso de que el o los productos seleccionados se encontraran agotados o demorados, DIVINE se comunicará con el Usuario y lo invitará a que elija una de las siguientes opciones:</p>
+    <ol class="shipping-list" style="list-style-type: decimal;">
+      <li>Continuar esperando la entrega del producto elegido (en caso de demora);</li>
+      <li>Cancelación de la compra y devolución del importe por el medio de pago original;</li>
+      <li>Optar por un producto alternativo que le ofrezca DIVINE para el caso particular.</li>
+    </ol>
+    <p>Cuando el Usuario opte por cancelar la compra, se devolverá el importe abonado según el medio de pago que se haya elegido oportunamente.</p>
+    <p>En el caso de que el Usuario opte por el producto alternativo que le ofrece DIVINE, éste deberá contener características iguales o superiores. En ningún caso se le pedirá al Usuario que abone sumas suplementarias o que se haga cargo de las diferencias, salvo que el producto alternativo elegido por el Usuario sea de características ampliamente superiores.</p>
+    <p><strong>IMPORTANTE:</strong> para las situaciones contempladas en este apartado, el Usuario tendrá un plazo de diez días para elegir una de las opciones mencionadas. En caso de que el Usuario guarde silencio al respecto, DIVINE podrá presumir que ha optado por la cancelación de la compra y procederá a la devolución del importe abonado.</p>
+  </section>
+
+  <section class="shipping-section">
+    <h3>10. Devolución del importe abonado</h3>
+    <p>En los casos mencionados en el punto anterior en que el Usuario haya optado por la devolución del importe abonado, deberá tener en cuenta que el reintegro puede demorar algunos días debido a plazos y cuestiones administrativas.</p>
+    <p>Para los casos de devolución vía depósito o transferencia bancaria, la cuenta bancaria deberá estar a nombre del titular de la Cuenta de Usuario desde donde se haya realizado la operación.</p>
+  </section>
+
+  <section class="shipping-section">
+    <h3>11. Validez de las promociones</h3>
+    <p>En el caso de que se realicen ofertas y promociones de productos, éstas tendrán validez para las compras efectuadas desde la fecha de comienzo de las mismas hasta la de finalización de la oferta. Los términos y condiciones de las mismas serán comunicados en el Website, y estarán siempre sujetas a la existencia en stock de los productos ofrecidos.</p>
+  </section>
+
+  <section class="shipping-section">
+    <h3>12. Impuesto al valor agregado (IVA)</h3>
+    <p>Todos los precios expresados en el Website incluyen IVA, salvo que se indique lo contrario.</p>
+  </section>
+
+  <section class="shipping-section">
+    <h3>13. Garantía de los productos</h3>
+    <p>La venta de los productos se realiza por cuenta y orden de DIVINE. La garantía de los productos que se adquieren a través de DIVINE es responsabilidad de la empresa. Cualquier reclamo deberá ser dirigido contra DIVINE.</p>
+  </section>
+
+  <section class="shipping-section">
+    <h3>14. Derecho de arrepentimiento. Devolución de los productos</h3>
+    <p>El Usuario tendrá derecho a devolver los productos adquiridos en el Website durante el plazo de diez días corridos, contados a partir de la entrega del pedido, sin responsabilidad alguna. Para esto deberá notificar de manera fehaciente a DIVINE dentro del plazo señalado, y poner a su disposición el o los productos adquiridos. Los productos deberán estar en el mismo estado en que fueron recibidos, sin haber sido utilizados, y con el embalaje original.</p>
+    <p>Asimismo, si el o los productos presentaren algún defecto de fabricación, hubieren sufrido roturas o deterioros en tránsito, o fueren despachados equivocadamente, el Usuario deberá comunicarse con el Centro de Atención al Cliente para que DIVINE proceda a gestionar el re-despacho o el retiro según corresponda.</p>
+    <p>La devolución de dinero será realizada al mismo medio de pago que utilizó el cliente para pagar la orden.</p>
+  </section>
+
+  <section class="shipping-section">
+    <h3>15. Moneda</h3>
+    <p>Todos los precios en el Website están expresados en pesos argentinos, moneda de curso legal de la República Argentina.</p>
+  </section>
+
+  <section class="shipping-section">
+    <h3>16. Medios de pago</h3>
+    <p>Los pagos podrán realizarse con tarjeta de crédito, débito u otros medios habilitados por DIVINE para facilitar las compras de sus clientes.</p>
+  </section>
+
+  <section class="shipping-section">
+    <h3>17. Pago con tarjeta de crédito</h3>
+    <p>Los pagos podrán ser realizados on-line mediante las tarjetas habilitadas. Toda la información ingresada por el Usuario está protegida por el sistema de seguridad SSL.</p>
+    <p>La confirmación de la compra con tarjeta de crédito estará sujeta a la autorización del emisor de la misma.</p>
+  </section>
+
+  <section class="shipping-section">
+    <h3>18. Envío de productos dentro del país. Tiempo de entrega</h3>
+    <p>Las entregas se realizarán en la dirección que el Usuario indique. La validez de la misma es de su exclusiva responsabilidad.</p>
+    <p>El tiempo de entrega depende de la disponibilidad del producto, del tiempo de envío y de la aprobación del medio de pago. Los días que se indiquen son estimativos.</p>
+  </section>
+
+  <section class="shipping-section">
+    <h3>19. Costos de envío</h3>
+    <p>El Usuario será claramente informado de los costos de entrega antes de realizar la compra. Estos costos son calculados en función del peso total y/o el volumen total del envío, y la zona de domicilio de entrega.</p>
+  </section>
+
+  <section class="shipping-section">
+    <h3>20. Horarios de entrega</h3>
+    <p>Los productos serán entregados de lunes a viernes en días hábiles dentro del horario estipulado por la empresa de logística.</p>
+  </section>
+
+  <section class="shipping-section">
+    <h3>21. Dirección de la entrega</h3>
+    <p>La dirección donde se entregará el producto será la que el Usuario indique. Es responsabilidad del Usuario completar y revisar cuidadosamente la información relacionada con la entrega.</p>
+  </section>
+
+  <section class="shipping-section">
+    <h3>22. Consulta sobre el estado del envío</h3>
+    <p>El estado ("tracking") del pedido podrá ser consultado en cualquier momento vía e-mail a ventaonline@divine.com o desde la sección Mi Cuenta en el Website.</p>
+  </section>
+</main>
+
+  <!-- BENEFICIOS / POLÍTICAS -->
+  <section class="benefits-section">
+    <div class="benefit-col">
+      <h4>ENVÍOS A TODO EL PAÍS</h4>
+      <p>Recibí tu pedido de<br>3 a 5 días hábiles.</p>
+      <a href="metodos_envio.html">Conocé más acá</a>
+    </div>
+    <div class="benefit-col">
+      <h4>CAMBIOS Y DEVOLUCIONES</h4>
+      <p>Hasta 30 días después de haber<br>realizado la compra.</p>
+      <a href="cambios_devoluciones.html">Conocé más acá</a>
+    </div>
+    <div class="benefit-col">
+      <h4>MÉTODOS DE PAGO</h4>
+      <p>Hasta 12 cuotas sin interés<br>en compras superiores a $350.000.</p>
+      <a href="metodos_pago.html">Conocé más acá</a>
+    </div>
+  </section>
+
+  <!-- FOOTER ESTILO MARKOVA -->
+  <footer class="footer-markova">
+    <div class="footer-grid">
+      <div class="footer-col newsletter-col">
+        <h4>Newsletter</h4>
+        <p>Sé la primera en enterarte de las últimas novedades.</p>
+        <form id="newsletterForm" class="footer-form" novalidate>
+          <input type="email" id="email" placeholder="Ingresá tu email" required>
+          <button type="submit" class="btn-text-submit">Confirmar</button>
+        </form>
+        <p class="newsletter-error" id="newsletterError"></p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Sobre Divine</h4>
+        <p><a href="historia_DIVINE.HTML" class="underline">Conocé la historia de marca acá</a></p>
+        <h4 class="mt-20">Seguinos en nuestras redes</h4>
+        <div class="social-links">
+          <a href="#">Facebook</a>
+          <a href="#">Instagram</a>
+          <a href="#">Tiktok</a>
+        </div>
+      </div>
+
+      <div class="footer-col contact-col">
+        <h4>Contacto</h4>
+        <p>✉ Escribinos</p>
+        <p>📞 1168401764</p>
+        <p>📍 Locales</p>
+        <p>❓ Preguntas frecuentes</p>
+        <p>🛍 Arrepentimiento de compra</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-legal">
+        <span>DIVINE ©2026. Todos los derechos reservados.</span>
+      </div>
+      <div class="footer-terms">
+        <a href="terminos_&_condiciones.html">Términos & Condiciones</a> | <a href="politica_privacidad.html">Política de privacidad</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ESTRUCTURA AGREGADA DEL SIDEBAR Y OVERLAY DEL CARRITO -->
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h2>CARRITO</h2>
+      <button class="cart-close" id="closeCart">&times;</button>
+    </div>
+    <div class="cart-items-container">
+      <!-- Los productos del carrito se cargan aquí -->
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>TOTAL:</span>
+        <span class="cart-total-price">$0</span>
+      </div>
+      <button class="btn-checkout">IR AL CARRITO</button>
+    </div>
+  </div>
+  <div class="cart-overlay" id="cartOverlay"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

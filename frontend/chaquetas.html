@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CHAQUETAS — DIVINE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300,400,500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- PROMO BAR -->
+    <div class="promo-bar">
+      <span><b><a href="#">3 Y 6 CUOTAS SIN INTERÉS</a></b></span>
+      <span><b><a href="#">12 CUOTAS DESDE $350.000</a></b></span>
+      <span><b><a href="#">ENVÍO GRATIS A PARTIR DE $250.000</a></b></span>
+    </div>
+
+ <!-- HEADER -->
+  <header class="main-header" id="navbar">
+  <div class="header-main-head">
+    <div class="header-main-logo-container">
+      <a href="index.html"><span class="logo-text">DIVINE</span></a>
+    </div>
+    <nav class="main-header__nav">
+      <ul class="main-navigation">
+        <li><a href="new-in.html" class="active">NUEVO</a></li>
+        <li class="has-megamenu">
+          <a href="#">COLECCIÓN</a>
+          <div class="megamenu">
+            <div class="megamenu-cols">
+              <div class="megamenu-col">
+                <h5>COLECCIÓN</h5>
+                <ul>
+                  <li><a href="blazers.html">Blazers</a></li>
+                  <li><a href="pantalones.html">Pantalones</a></li>
+                  <li><a href="sets_coordinados.html">Sets Coordinados</a></li>
+                  <li><a href="chaquetas.html">Chaquetas</a></li>
+                  <li><a href="vestidos_monos.html">Vestidos | Monos</a></li>
+                  <li><a href="tejidos.html">Tejidos</a></li>
+                  <li><a href="camisas_blusas.html">Camisas | Blusas</a></li>
+                  <li><a href="remeras_tops.html">Remeras | Tops</a></li>
+                  <li><a href="polleras_shorts.html">Polleras | Shorts</a></li>
+                  <li><a href="jeans.html">Jeans</a></li>
+                  <li><a href="calzado.html">Calzado</a></li>
+                  <li><a href="accesorios.html">Accesorios</a></li>
+                </ul>
+              </div>
+              <div class="megamenu-col">
+                <h5>SHOP BY</h5>
+                <ul>
+                  <li><a href="aprobado_x_Pampita.html">Aprobado x Pampita</a></li>
+                  <li><a href="looks_de_oficina.html">Looks de Oficina</a></li>
+                  <li><a href="by_Camila_Poggi.html">By Camila Poggi</a></li>
+                  <li><a href="fiestas_y_ocasiones.html">Fiestas y Ocasiones</a></li>
+                  <li><a href="shapewear.html">Shapewear</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="megamenu-cards">
+              <div class="megamenu-card"><img src="images/menudesplegable_tops.webp" alt="Tops"><span>Tops</span></div>
+              <div class="megamenu-card"><img src="images/menudesplegable_vestidos.webp" alt="Vestidos"><span>Vestidos</span></div>
+              <div class="megamenu-card"><img src="images/menudesplegable_sastreria.webp" alt="Sastrería"><span>Sastrería</span></div>
+            </div>
+          </div>
+        </li>
+        <li><a href="locales.html">LOCALES</a></li>
+      </ul>
+    </nav>
+
+    <!-- ÍCONOS DEL HEADER (Lupita, Usuario y Carrito con Drawer) -->
+    <div style="display: flex; gap: 20px; align-items: center; position: relative;">
+      
+      <!-- LUPITA DE BÚSQUEDA -->
+      <a href="javascript:void(0)" onclick="abrirSearchDrawer()" style="text-decoration:none; color:#000; display:flex; align-items:center;">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      </a>
+
+      <!-- PERSONITA (LOGIN) -->
+      <a href="javascript:void(0)" onclick="abrirAuthDrawer()" style="text-decoration:none; color:#000; display:flex; align-items:center;">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </a>
+
+      <!-- CARRITO LATERAL (ABRE EL DRAWER DE CARRITO) -->
+      <a href="javascript:void(0)" onclick="abrirCartDrawer()" style="text-decoration:none; color:#000; display:flex; align-items:center; position:relative;">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0"/></svg>
+        <span id="cartCountBadge" style="position: absolute; top: -8px; right: -10px; background: #000; color: #fff; font-size: 10px; padding: 2px 5px; border-radius: 50%; font-weight: 600;">0</span>
+      </a>
+
+    </div>
+  </div>
+</header>
+
+<!-- OVERLAY GLOBAL -->
+<div class="auth-drawer-overlay" id="globalOverlay" onclick="cerrarTodosLosDrawers()"></div>
+
+<!-- DRAWER LATERAL DE BÚSQUEDA -->
+<div class="auth-drawer" id="searchDrawer">
+  <div class="drawer-header">
+    <div class="drawer-title" style="visibility: hidden;">Búsqueda</div>
+    <button class="drawer-close" onclick="cerrarSearchDrawer()">&times;</button>
+  </div>
+  <div class="search-bar-box">
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="margin-right:8px;"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+    <input type="text" id="inputBuscadorGlobal" placeholder="Buscar productos..." oninput="ejecutarBusquedaDinamica(this.value)">
+  </div>
+  <div id="searchResultsCount" class="search-results-count"></div>
+  <div class="search-results-grid" id="searchResultsContainer"></div>
+</div>
+
+<!-- DRAWER LATERAL DE CARRITO -->
+<div class="auth-drawer" id="cartDrawer">
+  <div class="drawer-header">
+    <div class="drawer-title">Carrito</div>
+    <button class="drawer-close" onclick="cerrarCartDrawer()">&times;</button>
+  </div>
+  <div id="cartDrawerItemsContainer" style="flex: 1; overflow-y: auto; display: flex; flex-direction: column;">
+    <!-- Los productos se cargan dinámicamente aquí -->
+  </div>
+  <div style="border-top: 1px solid #eaeaea; padding-top: 20px; margin-top: 20px;">
+    <div style="display: flex; justify-content: space-between; font-size: 14px; font-weight: 600; margin-bottom: 20px;">
+      <span>TOTAL:</span>
+      <span id="cartDrawerTotal">$0</span>
+    </div>
+    <a href="carrito.html" class="btn-cart-drawer">IR AL CARRITO</a>
+  </div>
+</div>
+
+<!-- DRAWER LATERAL DE LOGIN / REGISTRO -->
+<div class="auth-drawer" id="authDrawer">
+  <div class="drawer-header">
+    <div class="drawer-title">Mi Cuenta</div>
+    <button class="drawer-close" onclick="cerrarAuthDrawer()">&times;</button>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 25px; margin-top: 10px;">
+    
+    <!-- SECCIÓN INGRESO -->
+    <div style="background: #fafafa; padding: 20px; border: 1px solid #eee;">
+      <div style="font-size: 12px; font-weight: 600; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 0.5px;">Ya tengo una cuenta</div>
+      <div class="form-group" style="margin-bottom: 12px;">
+        <label style="display:block; font-size:10px; font-weight:600; margin-bottom:4px; text-transform:uppercase;">Email</label>
+        <input type="email" id="drawerLoginEmail" placeholder="Ingresá tu email" style="width:100%; padding:10px; border:1px solid #ddd; font-size:12px; box-sizing:border-box;">
+      </div>
+      <div class="form-group" style="margin-bottom: 15px;">
+        <label style="display:block; font-size:10px; font-weight:600; margin-bottom:4px; text-transform:uppercase;">Contraseña</label>
+        <input type="password" id="drawerLoginPass" placeholder="Ingresá tu contraseña" style="width:100%; padding:10px; border:1px solid #ddd; font-size:12px; box-sizing:border-box;">
+      </div>
+      <button class="btn-auth-action" onclick="realizarLoginDrawer()">Ingresar</button>
+    </div>
+
+    <!-- SECCIÓN REGISTRO -->
+    <div style="background: #fafafa; padding: 20px; border: 1px solid #eee;">
+      <div style="font-size: 12px; font-weight: 600; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 0.5px;">Soy nueva</div>
+      <div class="form-group" style="margin-bottom: 12px;">
+        <label style="display:block; font-size:10px; font-weight:600; margin-bottom:4px; text-transform:uppercase;">Nombre y Apellido</label>
+        <input type="text" id="drawerRegNombre" placeholder="Tu nombre" style="width:100%; padding:10px; border:1px solid #ddd; font-size:12px; box-sizing:border-box;">
+      </div>
+      <div class="form-group" style="margin-bottom: 12px;">
+        <label style="display:block; font-size:10px; font-weight:600; margin-bottom:4px; text-transform:uppercase;">Email (Gmail)</label>
+        <input type="email" id="drawerRegEmail" placeholder="tuusuario@gmail.com" style="width:100%; padding:10px; border:1px solid #ddd; font-size:12px; box-sizing:border-box;">
+      </div>
+      <div class="form-group" style="margin-bottom: 15px;">
+        <label style="display:block; font-size:10px; font-weight:600; margin-bottom:4px; text-transform:uppercase;">Contraseña</label>
+        <input type="password" id="drawerRegPass" placeholder="Creá una contraseña" style="width:100%; padding:10px; border:1px solid #ddd; font-size:12px; box-sizing:border-box;">
+      </div>
+      <button class="btn-auth-action" onclick="realizarRegistroDrawer()">Crear cuenta</button>
+    </div>
+
+    </div>
+    </div>
+  </div>
+
+  <!-- BREADCRUMBS -->
+  <div class="breadcrumbs-container">
+    <a href="index.html">Home</a> &nbsp;|&nbsp; <span>CHAQUETAS</span>
+  </div>
+
+  <!-- HERO SPLIT CATEGORÍA (ESTILO MARKOVA) -->
+    <section class="category-hero-split">
+        <div class="hero-split-img">
+        <img src="images/chaquetas/banner_chaquetas.webp" alt="banner_chaquetas">
+        </div>
+        <div class="hero-split-text">
+        <p>
+            Esta temporada, las chaquetas se convierten en el gesto que define el look. Texturas como el efecto cuero, denim y el efecto gamuza se encuentran con colores renovados y detalles inesperados para crear piezas con personalidad, capaces de transformar incluso las propuestas más simples.
+        </p>
+        </div>
+    </section>
+
+  <!-- CATALOG GRID (4 COLUMNAS) -->
+  <section class="catalog-section">
+    <div class="products-grid-4">
+
+        <div class="catalog-card">
+            <a href="producto.html?id=23">
+                <div class="hover-img-container">
+                    <div class="tag-select-size">SELECCIONAR TALLE</div>
+                    <img class="img-first" src="images/chaquetas/chaqueta_reus1.webp" alt="chaqueta_reus">
+                    <img class="img-second" src="images/chaquetas/chaqueta_reus2.webp" alt="chaqueta_reus">
+                </div>
+                <div class="card-info">
+                    <span class="product-title">CHAQUETA REUS</span>
+                    <span class="product-price">$ 179,000</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="catalog-card">
+            <a href="producto.html?id=24">
+                <div class="hover-img-container">
+                    <div class="tag-select-size">SELECCIONAR TALLE</div>
+                    <img class="img-first" src="images/chaquetas/chaqueta_londres1.webp" alt="chaqueta_londres">
+                    <img class="img-second" src="images/chaquetas/chaqueta_londres2.webp" alt="chaqueta_londres">
+                </div>
+                <div class="card-info">
+                    <span class="product-title">CHAQUETA LONDRES</span>
+                    <span class="product-price">$ 260,000</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="catalog-card">
+            <a href="producto.html?id=25">
+                <div class="hover-img-container">
+                    <div class="tag-select-size">SELECCIONAR TALLE</div>
+                    <img class="img-first" src="images/chaquetas/chaqueta_malia1.webp" alt="chaqueta_malia">
+                    <img class="img-second" src="images/chaquetas/chaqueta_malia2.jpg" alt="chaqueta_malia">
+                </div>
+                <div class="card-info">
+                    <span class="product-title">CHAQUETA MALIA</span>
+                    <span class="product-price">$ 230,000</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="catalog-card">
+            <a href="producto.html?id=26">
+                <div class="hover-img-container">
+                    <div class="tag-select-size">SELECCIONAR TALLE</div>
+                    <img class="img-first" src="images/chaquetas/chaqueta_trento1.webp" alt="chaqueta_trento">
+                    <img class="img-second" src="images/chaquetas/chaqueta_trento2.jpg" alt="chaqueta_trento">
+                </div>
+                <div class="card-info">
+                    <span class="product-title">CHAQUETA TRENTO</span>
+                    <span class="product-price">$ 230,000</span>
+                </div>
+            </a>
+        </div>
+        
+    </div>
+  </section>
+
+  <!-- BENEFICIOS / POLÍTICAS -->
+  <section class="benefits-section">
+    <div class="benefit-col">
+      <h4>ENVÍOS A TODO EL PAÍS</h4>
+      <p>Recibí tu pedido de<br>3 a 5 días hábiles.</p>
+      <a href="metodos_envio.html">Conocé más acá</a>
+    </div>
+    <div class="benefit-col">
+      <h4>CAMBIOS Y DEVOLUCIONES</h4>
+      <p>Hasta 30 días después de haber<br>realizado la compra.</p>
+      <a href="cambios_devoluciones.html">Conocé más acá</a>
+    </div>
+    <div class="benefit-col">
+      <h4>MÉTODOS DE PAGO</h4>
+      <p>Hasta 12 cuotas sin interés<br>en compras superiores a $350.000.</p>
+      <a href="metodos_pago.html">Conocé más acá</a>
+    </div>
+  </section>
+
+  <!-- FOOTER ESTILO MARKOVA -->
+  <footer class="footer-markova">
+    <div class="footer-grid">
+      <div class="footer-col newsletter-col">
+        <h4>Newsletter</h4>
+        <p>Sé la primera en enterarte de las últimas novedades.</p>
+        <form id="newsletterForm" class="footer-form" novalidate>
+          <input type="email" id="email" placeholder="Ingresá tu email" required>
+          <button type="submit" class="btn-text-submit">Confirmar</button>
+        </form>
+        <p class="newsletter-error" id="newsletterError"></p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Sobre Divine</h4>
+        <p><a href="historia_DIVINE.HTML" class="underline">Conocé la historia de marca acá</a></p>
+        <h4 class="mt-20">Seguinos en nuestras redes</h4>
+        <div class="social-links">
+          <a href="#">Facebook</a>
+          <a href="#">Instagram</a>
+          <a href="#">Tiktok</a>
+        </div>
+      </div>
+
+      <div class="footer-col contact-col">
+        <h4>Contacto</h4>
+        <p>✉ Escribinos</p>
+        <p>📞 1168401764</p>
+        <p>📍 Locales</p>
+        <p>❓ Preguntas frecuentes</p>
+        <p>🛍 Arrepentimiento de compra</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-legal">
+        <span>DIVINE ©2026. Todos los derechos reservados.</span>
+      </div>
+      <div class="footer-terms">
+        <a href="terminos_&_condiciones.html">Términos & Condiciones</a> | <a href="politica_privacidad.html">Política de privacidad</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ESTRUCTURA AGREGADA DEL SIDEBAR Y OVERLAY DEL CARRITO -->
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h2>CARRITO</h2>
+      <button class="cart-close" id="closeCart">&times;</button>
+    </div>
+    <div class="cart-items-container">
+      <!-- Los productos del carrito se cargan aquí -->
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>TOTAL:</span>
+        <span class="cart-total-price">$0</span>
+      </div>
+      <button class="btn-checkout">IR AL CARRITO</button>
+    </div>
+  </div>
+  <div class="cart-overlay" id="cartOverlay"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

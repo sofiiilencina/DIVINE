@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CARRITO — DIVINE</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body { font-family: 'Inter', sans-serif; color: #111; background: #fff; margin: 0; }
+    .cart-page-container { max-width: 1200px; margin: 40px auto; padding: 0 20px; display: grid; grid-template-columns: 2fr 1fr; gap: 40px; }
+    .cart-table { width: 100%; border-collapse: collapse; }
+    .cart-table th { text-align: left; font-size: 12px; font-weight: 600; color: #777; border-bottom: 1px solid #eee; padding-bottom: 15px; }
+    .cart-table td { padding: 20px 0; border-bottom: 1px solid #eee; vertical-align: middle; font-size: 14px; }
+    .summary-box { background: #fafafa; padding: 30px; border: 1px solid #eee; }
+    .summary-row { display: flex; justify-content: space-between; margin-bottom: 15px; font-size: 14px; }
+    .summary-total { font-weight: 600; font-size: 16px; border-top: 1px solid #ddd; padding-top: 15px; margin-top: 15px; }
+    .btn-black { width: 100%; background: #000; color: #fff; padding: 15px; border: none; font-weight: 600; cursor: pointer; letter-spacing: 1px; margin-bottom: 10px; }
+    .btn-outline { width: 100%; background: #fff; color: #000; padding: 15px; border: 1px solid #000; font-weight: 600; cursor: pointer; letter-spacing: 1px; }
+    .qty-selector { display: inline-flex; border: 1px solid #ccc; align-items: center; }
+    .qty-selector button { background: none; border: none; padding: 5px 10px; cursor: pointer; }
+    .qty-selector span { padding: 0 10px; }
+  </style>
+</head>
+<body>
+
+  <header class="main-header" style="border-bottom: 1px solid #eee; padding: 20px; text-align: center;">
+    <a href="index.html"><span class="logo-text">DIVINE</span></a>
+  </header>
+
+  <div class="cart-page-container">
+    <div>
+      <h2 style="font-size: 20px; font-weight: 500; margin-bottom: 30px;">CARRITO</h2>
+      <table class="cart-table">
+        <thead>
+          <tr>
+            <th>ART.</th>
+            <th>Talle</th>
+            <th>Cant.</th>
+            <th>Precio</th>
+            <th>Borrar</th>
+          </tr>
+        </thead>
+        <tbody id="cartTableBody">
+          <!-- Los productos se cargan dinámicamente aquí -->
+        </tbody>
+      </table>
+    </div>
+
+    <div>
+      <div class="summary-box">
+        <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 20px;">Detalle de la compra</h3>
+        <div class="summary-row">
+          <span>Subtotal</span>
+          <span id="summarySubtotal">$0</span>
+        </div>
+        <div class="summary-row summary-total">
+          <span>Total</span>
+          <span id="summaryTotal">$0</span>
+        </div>
+        <button class="btn-black" id="btnCompletarCompra">COMPLETAR COMPRA</button>
+        <button class="btn-outline" onclick="window.location.href='index.html'">SEGUIR COMPRANDO</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Función visual minimalista para avisos estéticos
+    function mostrarAvisoCarrito(mensaje) {
+      let toast = document.querySelector('.divine-toast');
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.className = 'divine-toast';
+        toast.style.cssText = "position: fixed; top: 30px; left: 50%; transform: translateX(-50%); background: #111; color: #fff; padding: 12px 24px; font-size: 13px; letter-spacing: 1px; z-index: 9999; transition: all 0.3s ease;";
+        document.body.appendChild(toast);
+      }
+      toast.textContent = mensaje;
+      toast.style.opacity = '1';
+      setTimeout(() => {
+        toast.style.opacity = '0';
+      }, 2500);
+    }
+
+    function cargarPaginaCarrito() {
+      const tbody = document.getElementById('cartTableBody');
+      const subtotalEl = document.getElementById('summarySubtotal');
+      const totalEl = document.getElementById('summaryTotal');
+      
+      // Leemos exactamente del mismo 'cart' que usa el resto de la página
+      let carrito = JSON.parse(localStorage.getItem('cart')) || [];
+
+      tbody.innerHTML = '';
+      let total = 0;
+
+      if (carrito.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; color:#666; padding: 40px;">Tu carrito está vacío.</td></tr>';
+        subtotalEl.textContent = '$0';
+        totalEl.textContent = '$0';
+        actualizarMensajeEnvio(0);
+        return;
+      }
+
+      carrito.forEach((item, index) => {
+        total += Number(item.price) * Number(item.quantity);
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td style="display: flex; gap: 15px; align-items: center;">
+            <img src="${item.image || ''}" alt="${item.name}" style="width: 60px; height: 80px; object-fit: cover;">
+            <div>
+              <strong style="font-size: 13px;">${item.name}</strong><br>
+              <span style="font-size: 11px; color: #666;">Talle: ${item.size}</span>
+            </div>
+          </td>
+          <td>${item.size}</td>
+          <td>
+            <div class="qty-selector">
+              <button onclick="cambiarCantidad(${index}, -1)">-</button>
+              <span>${item.quantity}</span>
+              <button onclick="cambiarCantidad(${index}, 1)">+</button>
+            </div>
+          </td>
+          <td>$${Number(item.price * item.quantity).toLocaleString('es-AR')}</td>
+          <td><button onclick="eliminarItemCarrito(${index})" style="background:none; border:none; cursor:pointer; font-size:16px;">&#128465;</button></td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      subtotalEl.textContent = `$${Number(total).toLocaleString('es-AR')}`;
+      totalEl.textContent = `$${Number(total).toLocaleString('es-AR')}`;
+      actualizarMensajeEnvio(total);
+    }
+
+    // Cálculo del envío gratis ajustado exactamente a $250.000
+    function actualizarMensajeEnvio(total) {
+      let contenedorEnvio = document.getElementById('envioGratisMsg');
+      if (!contenedorEnvio) {
+        contenedorEnvio = document.createElement('p');
+        contenedorEnvio.id = 'envioGratisMsg';
+        contenedorEnvio.style.fontSize = '12px';
+        contenedorEnvio.style.margin = '15px 0';
+        const summaryBox = document.querySelector('.summary-box');
+        const btnComprar = document.getElementById('btnCompletarCompra');
+        summaryBox.insertBefore(contenedorEnvio, btnComprar);
+      }
+
+      const umbralEnvio = 250000;
+      if (total >= umbralEnvio) {
+        contenedorEnvio.textContent = '¡Tenés ENVÍO GRATIS!';
+        contenedorEnvio.style.color = '#2d7a42';
+      } else if (total > 0) {
+        const falta = umbralEnvio - total;
+        contenedorEnvio.textContent = `Agregá $${Number(falta).toLocaleString('es-AR')} más para tener envío gratis`;
+        contenedorEnvio.style.color = '#666';
+      } else {
+        contenedorEnvio.textContent = '';
+      }
+    }
+
+    // Control de cantidades con límite máximo de 10
+    window.cambiarCantidad = function(index, delta) {
+      let carrito = JSON.parse(localStorage.getItem('cart')) || [];
+      const nuevaCantidad = carrito[index].quantity + delta;
+
+      if (nuevaCantidad > 10) {
+        mostrarAvisoCarrito('Lo sentimos, no tenemos esa cantidad disponible ahora.');
+        return;
+      }
+
+      if (nuevaCantidad <= 0) {
+        carrito.splice(index, 1);
+      } else {
+        carrito[index].quantity = nuevaCantidad;
+      }
+
+      localStorage.setItem('cart', JSON.stringify(carrito));
+      cargarPaginaCarrito();
+      actualizarContadorGlobal();
+    };
+
+    // Eliminar producto al presionar el tachito de basura de forma instantánea
+    window.eliminarItemCarrito = function(index) {
+      let carrito = JSON.parse(localStorage.getItem('cart')) || [];
+      carrito.splice(index, 1);
+      localStorage.setItem('cart', JSON.stringify(carrito));
+      
+      cargarPaginaCarrito();
+      actualizarContadorGlobal();
+    };
+
+    function actualizarContadorGlobal() {
+      const carrito = JSON.parse(localStorage.getItem('cart')) || [];
+      const contador = document.querySelector('.cart-size');
+      if (contador) {
+        const totalItems = carrito.reduce((sum, item) => sum + item.quantity, 0);
+        contador.textContent = totalItems;
+      }
+    }
+
+    // Procesar compra, validar stock en base de datos y descontarlo
+    document.getElementById('btnCompletarCompra').addEventListener('click', () => {
+  const carrito = JSON.parse(localStorage.getItem('cart')) || [];
+  if (carrito.length === 0) {
+    mostrarAvisoCarrito('Tu carrito está vacío.');
+    return;
+  }
+  // Redirige al login / checkout para iniciar el flujo de pago
+  window.location.href = 'checkout-pago.html';
+});
+
+    document.addEventListener('DOMContentLoaded', cargarPaginaCarrito);
+  </script>
+</body>
+</html>

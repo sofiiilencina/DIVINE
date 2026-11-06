@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel Administrador — DIVINE</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #fafafa; color: #111; margin: 0; padding: 20px; }
+    .admin-container { max-width: 900px; margin: 0 auto; background: #fff; padding: 30px; border: 1px solid #eee; }
+    h2 { font-size: 18px; font-weight: 600; margin-bottom: 20px; }
+    .form-group { margin-bottom: 15px; }
+    label { display: block; font-size: 12px; color: #555; margin-bottom: 5px; }
+    input, select { width: 100%; padding: 10px; border: 1px solid #ddd; box-sizing: border-box; }
+    button { background: #000; color: #fff; border: none; padding: 12px 20px; font-weight: 600; cursor: pointer; }
+    table { width: 100%; border-collapse: collapse; margin-top: 30px; font-size: 13px; }
+    th, td { padding: 12px; border-bottom: 1px solid #eee; text-align: left; }
+    th { background: #f5f5f5; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="admin-container">
+    <h2>PANEL DE CONTROL — ADMINISTRADOR</h2>
+    
+    <!-- Formulario para agregar producto -->
+    <form id="productForm">
+      <div class="form-group">
+        <label>Nombre del Producto</label>
+        <input type="text" id="name" required>
+      </div>
+      <div class="form-group">
+        <label>Descripción</label>
+        <input type="text" id="description" required>
+      </div>
+      <div class="form-group">
+        <label>Precio ($)</label>
+        <input type="number" id="price" required>
+      </div>
+      <div class="form-group">
+        <label>Categoría ID (1 al 17)</label>
+        <input type="number" id="category_id" required>
+      </div>
+      <div class="form-group">
+        <label>Ruta Imagen Principal</label>
+        <input type="text" id="image_first" placeholder="images/blazers/ejemplo.webp" required>
+      </div>
+      <button type="submit">AGREGAR NUEVO PRODUCTO</button>
+    </form>
+
+    <!-- Listado de productos actuales -->
+    <h2 style="margin-top: 40px;">Productos en el Catálogo</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody id="adminProductTable">
+        <!-- Se llena con JavaScript -->
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    async function cargarProductosAdmin() {
+      try {
+        const res = await fetch('http://localhost:3000/api/products');
+        const productos = await res.json();
+        const tbody = document.getElementById('adminProductTable');
+        tbody.innerHTML = '';
+        productos.forEach(p => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td>${p.id}</td>
+            <td>${p.name}</td>
+            <td>$${Number(p.price).toLocaleString('es-AR')}</td>
+            <td><button onclick="eliminarProducto(${p.id})" style="background:#a33; padding: 6px 10px; font-size:11px;">Eliminar</button></td>
+          `;
+          tbody.appendChild(tr);
+        });
+      } catch (e) {
+        console.error('Error al cargar productos', e);
+      }
+    }
+
+    document.getElementById('productForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const nuevoProducto = {
+        name: document.getElementById('name').value,
+        description: document.getElementById('description').value,
+        price: Number(document.getElementById('price').value),
+        category_id: Number(document.getElementById('category_id').value),
+        image_first: document.getElementById('image_first').value,
+        image_second: document.getElementById('image_second').value || document.getElementById('image_first').value
+      };
+
+      const res = await fetch('http://localhost:3000/api/admin/products', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(nuevoProducto)
+      });
+      if (res.ok) {
+        alert('¡Producto agregado con éxito!');
+        document.getElementById('productForm').reset();
+        cargarProductosAdmin();
+      }
+    });
+
+    async function eliminarProducto(id) {
+      if (confirm('¿Estás segura de eliminar este producto?')) {
+        await fetch(`http://localhost:3000/api/admin/products/${id}`, { method: 'DELETE' });
+        cargarProductosAdmin();
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', cargarProductosAdmin);
+  </script>
+</body>
+</html>
