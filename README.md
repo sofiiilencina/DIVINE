@@ -124,4 +124,4 @@ Sigue estos pasos para poner a funcionar el proyecto localmente:
 
 ## ✒️ Autor
 
-Proyecto desarrollado como parte de la entrega de la materia Programación Web Dinámica por **Sofía Lencina**.
+Proyecto desarrollado como parte de la entrega de la materia Programación Web Dinámica por **Sofía Lencina & Medel Guadalupe**.
